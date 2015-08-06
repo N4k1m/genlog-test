@@ -5,6 +5,7 @@
  */
 package dragdrop;
 
+import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -26,11 +27,14 @@ public class DragDropPanelWithTitle extends DragDropPanel
 
     public DragDropPanelWithTitle(String title)
     {
+        // GUI Configuration
         super();
+        this.setLayout(new java.awt.BorderLayout());
 
         // Populate panel
-        this.labelTitle = new JLabel(title, SwingConstants.CENTER);
-        this.add(this.labelTitle);
+        this.labelTitle = new JLabel(title);
+        this.labelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        this.add(this.labelTitle, BorderLayout.CENTER);
     }
     //</editor-fold>
 }
