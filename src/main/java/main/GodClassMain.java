@@ -5,6 +5,7 @@
  */
 package main;
 
+import gui.MainFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -29,7 +30,9 @@ public class GodClassMain
         }
         //</editor-fold>
 
-        System.out.println("GodClass : Hello World!");
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
     }
 
     //<editor-fold defaultstate="collapsed" desc="Get all "look and feel" available on this OS">
