@@ -5,8 +5,12 @@
  */
 package gui;
 
+import dragdrop.DragDropEvent;
+import dragdrop.DragDropListener;
 import dragdrop.DragDropPanelWithTitle;
+import dragdrop.MultipleDragDropEvent;
 import java.awt.Dimension;
+import java.io.File;
 import utils.TextAreaOutputStream;
 
 /**
@@ -14,6 +18,7 @@ import utils.TextAreaOutputStream;
  * @author Nakim
  */
 public class MainFrame extends javax.swing.JFrame
+                       implements DragDropListener
 {
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     // Header
@@ -38,6 +43,7 @@ public class MainFrame extends javax.swing.JFrame
 
         // Create drop panel
         this.dragDropPanel = new DragDropPanelWithTitle("Déposer des fichiers ici ...");
+        this.dragDropPanel.addDragDropListener(this);
         this.dragDropPanel.setPreferredSize(new Dimension(0, 75));
         this.add(this.dragDropPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -129,6 +135,13 @@ public class MainFrame extends javax.swing.JFrame
         panelConsole.setLayout(new java.awt.BorderLayout());
 
         buttonClearConsole.setText("Effacer");
+        buttonClearConsole.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                buttonClearConsoleActionPerformed(evt);
+            }
+        });
         panelConsole.add(buttonClearConsole, java.awt.BorderLayout.PAGE_END);
 
         textAreaOutput.setEditable(false);
@@ -142,6 +155,28 @@ public class MainFrame extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //<editor-fold defaultstate="collapsed" desc="Events handlers">
+    private void buttonClearConsoleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonClearConsoleActionPerformed
+    {//GEN-HEADEREND:event_buttonClearConsoleActionPerformed
+        this.textAreaOutput.setText(null);
+    }//GEN-LAST:event_buttonClearConsoleActionPerformed
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Drag & drop event handlers">
+    @Override
+    public void fileDropped(DragDropEvent event)
+    {
+        System.out.println("File dropped : " + event.getFile().getName());
+    }
+
+    @Override
+    public void filesDropped(MultipleDragDropEvent event)
+    {
+        for (File file : event.getFiles())
+            System.out.println("File dropped : " + file.getName());
+    }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Generated Widgets">
     // Variables declaration - do not modify//GEN-BEGIN:variables
