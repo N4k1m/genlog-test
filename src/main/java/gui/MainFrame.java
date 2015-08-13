@@ -5,12 +5,8 @@
  */
 package gui;
 
-import dragdrop.DragDropEvent;
-import dragdrop.DragDropListener;
 import dragdrop.DragDropPanelWithTitle;
-import dragdrop.MultipleDragDropEvent;
 import java.awt.Dimension;
-import java.io.File;
 import utils.TextAreaOutputStream;
 
 /**
@@ -18,11 +14,11 @@ import utils.TextAreaOutputStream;
  * @author Nakim
  */
 public class MainFrame extends javax.swing.JFrame
-                       implements DragDropListener
 {
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     // Header
     private DragDropPanelWithTitle dragDropPanel;
+    private MainFrameMediator mediator;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -41,9 +37,12 @@ public class MainFrame extends javax.swing.JFrame
         TextAreaOutputStream toas = TextAreaOutputStream.getInstance(
             this.textAreaOutput);
 
+        // Mediator
+        this.mediator = new MainFrameMediator();
+
         // Create drop panel
         this.dragDropPanel = new DragDropPanelWithTitle("Déposer des fichiers ici ...");
-        this.dragDropPanel.addDragDropListener(this);
+        this.dragDropPanel.addDragDropListener(this.mediator);
         this.dragDropPanel.setPreferredSize(new Dimension(0, 75));
         this.add(this.dragDropPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -161,21 +160,6 @@ public class MainFrame extends javax.swing.JFrame
     {//GEN-HEADEREND:event_buttonClearConsoleActionPerformed
         this.textAreaOutput.setText(null);
     }//GEN-LAST:event_buttonClearConsoleActionPerformed
-    //</editor-fold>
-
-    //<editor-fold defaultstate="collapsed" desc="Drag & drop event handlers">
-    @Override
-    public void fileDropped(DragDropEvent event)
-    {
-        System.out.println("File dropped : " + event.getFile().getName());
-    }
-
-    @Override
-    public void filesDropped(MultipleDragDropEvent event)
-    {
-        for (File file : event.getFiles())
-            System.out.println("File dropped : " + file.getName());
-    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Generated Widgets">
