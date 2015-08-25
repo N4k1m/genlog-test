@@ -152,7 +152,4 @@ public class GodClassCalculator
         this.atfdLimit = atfdLimit;
     }
     //</editor-fold>
-
-
-
 }
