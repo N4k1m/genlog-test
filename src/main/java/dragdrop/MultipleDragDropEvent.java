@@ -7,26 +7,28 @@ package dragdrop;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 
 /**
  *
  * @author Nakim
  */
-public class MultipleDragDropEvent
+public class MultipleDragDropEvent extends EventObject
 {
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     protected List<File> files;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructor">
-    public MultipleDragDropEvent()
+    public MultipleDragDropEvent(Object source)
     {
-        this(new ArrayList<File>());
+        this(source, new ArrayList<File>());
     }
 
-    public MultipleDragDropEvent(List<File> files)
+    public MultipleDragDropEvent(Object source, List<File> files)
     {
+        super(source);
         this.files = files;
     }
     //</editor-fold>

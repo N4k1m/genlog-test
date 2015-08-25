@@ -29,7 +29,7 @@ import javax.swing.event.EventListenerList;
  * @author Nakim
  */
 public class DragDropPanel extends javax.swing.JPanel
-                       implements DropTargetListener
+                           implements DropTargetListener
 {
     //<editor-fold defaultstate="collapsed" desc="Variables declarations">
     protected final EventListenerList listeners = new EventListenerList();
@@ -70,7 +70,7 @@ public class DragDropPanel extends javax.swing.JPanel
         for (DragDropListener listener : this.getDragDropListeners())
         {
             if (event == null)
-                event = new DragDropEvent(file);
+                event = new DragDropEvent(this, file);
 
             listener.fileDropped(event);
         }
@@ -91,7 +91,7 @@ public class DragDropPanel extends javax.swing.JPanel
             for (DragDropListener listener : this.getDragDropListeners())
             {
                 if (event == null)
-                    event = new MultipleDragDropEvent(files);
+                    event = new MultipleDragDropEvent(this, files);
 
                 listener.filesDropped(event);
             }

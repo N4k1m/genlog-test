@@ -6,20 +6,23 @@
 package dragdrop;
 
 import java.io.File;
+import java.util.EventObject;
 
 /**
  *
  * @author Nakim
  */
-public class DragDropEvent
+public class DragDropEvent extends EventObject
 {
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     protected File file;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructor">
-    public DragDropEvent(File file)
+    public DragDropEvent(Object source, File file)
     {
+        super(source);
+        
         this.file = file;
     }
     //</editor-fold>
