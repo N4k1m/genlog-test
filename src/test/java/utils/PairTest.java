@@ -80,6 +80,13 @@ public class PairTest
     @Test
     public void testToString()
     {
+        System.out.println("* PairTest: testToString()");
+
+        String expectedOutput = "[First = 1, Second = 4.2]";
+        assertEquals(expectedOutput, this.pair.toString());
+
+        expectedOutput = "[First = 4.2, Second = 1]";
+        assertNotSame(expectedOutput, this.pair.toString());
     }
 
     /**
@@ -88,5 +95,17 @@ public class PairTest
     @Test
     public void testEquals()
     {
+        System.out.println("* PairTest: testEquals()");
+
+        Pair pair2 = Pair.create((Integer)1, (Double)4.2);
+        assertTrue(this.pair.equals(pair2));
+
+        pair2 = Pair.create((Double)4.2, (Integer)1);
+        assertTrue(this.pair.equals(pair2));
+
+        pair2 = Pair.create((Integer)1, (Integer)42);
+        assertFalse(this.pair.equals(pair2));
+
+        assertFalse(this.pair.equals(this.a));
     }
 }
