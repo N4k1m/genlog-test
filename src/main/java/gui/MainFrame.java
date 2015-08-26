@@ -5,9 +5,15 @@
  */
 package gui;
 
+import godclass.GodClassMediator;
 import dragdrop.DragDropPanelWithTitle;
+import godclass.ATFDLimitSpinner;
+import godclass.HorizontalAlignedColoredLabel;
+import godclass.MCCLimitSpinner;
+import godclass.TCCLimitSpinner;
+import godclass.WMCLimitSpinner;
 import java.awt.Dimension;
-import utils.TextAreaOutputStream;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
  *
@@ -18,7 +24,28 @@ public class MainFrame extends javax.swing.JFrame
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     // Header
     private DragDropPanelWithTitle dragDropPanel;
-    private MainFrameMediator mediator;
+
+    // Concret Mediator
+    private GodClassMediator mediator;
+
+    // Concret Colleagues
+    private ATFDLimitSpinner atfdLimitSpinner;
+    private HorizontalAlignedColoredLabel atfdTFLabel;
+    private HorizontalAlignedColoredLabel atfdValueLabel;
+
+    private WMCLimitSpinner wmcLimitSpinner;
+    private HorizontalAlignedColoredLabel wmcTFLabel;
+    private HorizontalAlignedColoredLabel wmcValueLabel;
+
+    private MCCLimitSpinner mccLimitSpinner;
+    private HorizontalAlignedColoredLabel mccTFLabel;
+    private HorizontalAlignedColoredLabel mccValueLabel;
+
+    private TCCLimitSpinner tccLimitSpinner;
+    private HorizontalAlignedColoredLabel tccTFLabel;
+    private HorizontalAlignedColoredLabel tccValueLabel;
+
+    private HorizontalAlignedColoredLabel godClassTFLabel;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -34,14 +61,69 @@ public class MainFrame extends javax.swing.JFrame
         this.setTitle(title);
 
         // Redirect the system output to a TextArea
-        TextAreaOutputStream toas = TextAreaOutputStream.getInstance(
+        /*TextAreaOutputStream toas = TextAreaOutputStream.getInstance(
             this.textAreaOutput);
+            */
 
         // Mediator
-        this.mediator = new MainFrameMediator();
+        this.mediator = new GodClassMediator();
+
+        // Colleagues
+        System.out.println("ATFD");
+        this.atfdLimitSpinner = new ATFDLimitSpinner(this.mediator);
+        this.atfdValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "ATFD ?");
+        this.atfdTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
+
+        System.out.println("WMC");
+        this.wmcLimitSpinner = new WMCLimitSpinner(this.mediator);
+        this.wmcValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "WMC ?");
+        this.wmcTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
+
+        System.out.println("MCC");
+        this.mccLimitSpinner = new MCCLimitSpinner(this.mediator);
+        this.mccValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "MCC ?");
+        this.mccTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
+
+        System.out.println("TCC");
+        this.tccLimitSpinner = new TCCLimitSpinner(this.mediator);
+        this.tccValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "TCC ?");
+        this.tccTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
+
+        this.godClassTFLabel = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
+
+        // Register labels
+        this.mediator.registerATFDValueLabel(this.atfdValueLabel);
+        this.mediator.registerATFDTFLabel(this.atfdTFLabel);
+        this.mediator.registerWMCValueLabel(this.wmcValueLabel);
+        this.mediator.registerWMCTFLabel(this.wmcTFLabel);
+        this.mediator.registerMCCValueLabel(this.mccValueLabel);
+        this.mediator.registerMCCTFLabel(this.mccTFLabel);
+        this.mediator.registerTCCValueLabel(this.tccValueLabel);
+        this.mediator.registerTCCTFLabel(this.tccTFLabel);
+        this.mediator.registerGodClassTFLabel(this.godClassTFLabel);
+
+        // Populate "GodClass" panel
+        this.panelGodClass.add(this.atfdLimitSpinner, new AbsoluteConstraints(110, 70, 70, -1), 0);
+        this.panelGodClass.add(this.atfdValueLabel, new AbsoluteConstraints(20, 70, 70, 30), 0);
+        this.panelGodClass.add(this.atfdTFLabel, new AbsoluteConstraints(205, 70, 160, 30), 0);
+
+        this.panelGodClass.add(this.wmcLimitSpinner, new AbsoluteConstraints(110, 210, 70, -1), 0);
+        this.panelGodClass.add(this.wmcValueLabel, new AbsoluteConstraints(20, 210, 70, 30), 0);
+        this.panelGodClass.add(this.wmcTFLabel, new AbsoluteConstraints(200, 210, 170, 30), 0);
+
+        this.panelGodClass.add(this.mccLimitSpinner, new AbsoluteConstraints(110, 280, 70, -1), 0);
+        this.panelGodClass.add(this.mccValueLabel, new AbsoluteConstraints(20, 280, 70, 30), 0);
+        this.panelGodClass.add(this.mccTFLabel, new AbsoluteConstraints(200, 280, 170, 30), 0);
+
+        this.panelGodClass.add(this.tccLimitSpinner, new AbsoluteConstraints(110, 440, 70, -1), 0);
+        this.panelGodClass.add(this.tccValueLabel, new AbsoluteConstraints(20, 440, 70, 30), 0);
+        this.panelGodClass.add(this.tccTFLabel, new AbsoluteConstraints(200, 440, 160, 30), 0);
+
+        this.panelGodClass.add(this.godClassTFLabel, new AbsoluteConstraints(640, 210, 170, 40), 0);
 
         // Create drop panel
-        this.dragDropPanel = new DragDropPanelWithTitle("Déposer des fichiers ici ...");
+        this.dragDropPanel = new DragDropPanelWithTitle(
+            "Déposez un fichier ici", "Lachez maintenant !");
         this.dragDropPanel.addDragDropListener(this.mediator);
         this.dragDropPanel.setPreferredSize(new Dimension(0, 75));
         this.add(this.dragDropPanel, java.awt.BorderLayout.PAGE_START);
@@ -57,18 +139,6 @@ public class MainFrame extends javax.swing.JFrame
 
         tabbedPane = new javax.swing.JTabbedPane();
         panelGodClass = new javax.swing.JPanel();
-        spinnerATFDLimit = new javax.swing.JSpinner();
-        spinnerWMCMethodCountLimit = new javax.swing.JSpinner();
-        spinnerWMCLimit = new javax.swing.JSpinner();
-        spinnerTCCLimit = new javax.swing.JSpinner();
-        labelATFDValue = new javax.swing.JLabel();
-        labelATFDTF = new javax.swing.JLabel();
-        labelWMCMethodCountValue = new javax.swing.JLabel();
-        labelWMCValue = new javax.swing.JLabel();
-        labelWMCTF = new javax.swing.JLabel();
-        labelTCCValue = new javax.swing.JLabel();
-        labelTCCTF = new javax.swing.JLabel();
-        labelGodClassTF = new javax.swing.JLabel();
         labelBackground = new javax.swing.JLabel();
         panelStatistics = new javax.swing.JPanel();
         panelConsole = new javax.swing.JPanel();
@@ -80,50 +150,6 @@ public class MainFrame extends javax.swing.JFrame
         setResizable(false);
 
         panelGodClass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        spinnerATFDLimit.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
-        panelGodClass.add(spinnerATFDLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 70, -1));
-
-        spinnerWMCMethodCountLimit.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
-        panelGodClass.add(spinnerWMCMethodCountLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 70, -1));
-
-        spinnerWMCLimit.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
-        panelGodClass.add(spinnerWMCLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 70, -1));
-
-        spinnerTCCLimit.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(0.1d)));
-        panelGodClass.add(spinnerTCCLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 70, -1));
-
-        labelATFDValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelATFDValue.setText("ATFD ?");
-        panelGodClass.add(labelATFDValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, 30));
-
-        labelATFDTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelATFDTF.setText("TRUE or FALSE ?");
-        panelGodClass.add(labelATFDTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 70, 160, 30));
-
-        labelWMCMethodCountValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelWMCMethodCountValue.setText("count ?");
-        panelGodClass.add(labelWMCMethodCountValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 70, 30));
-
-        labelWMCValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelWMCValue.setText("WMC ?");
-        panelGodClass.add(labelWMCValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 70, 40));
-
-        labelWMCTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelWMCTF.setText("TRUE or FALSE ?");
-        panelGodClass.add(labelWMCTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 170, 40));
-
-        labelTCCValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTCCValue.setText("TCC ?");
-        panelGodClass.add(labelTCCValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 70, 30));
-
-        labelTCCTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTCCTF.setText("TRUE or FALSE ?");
-        panelGodClass.add(labelTCCTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 160, 30));
-
-        labelGodClassTF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelGodClassTF.setText("TRUE or FALSE ?");
-        panelGodClass.add(labelGodClassTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 170, 40));
 
         labelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.png"))); // NOI18N
         panelGodClass.add(labelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -165,23 +191,11 @@ public class MainFrame extends javax.swing.JFrame
     //<editor-fold defaultstate="collapsed" desc="Generated Widgets">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClearConsole;
-    private javax.swing.JLabel labelATFDTF;
-    private javax.swing.JLabel labelATFDValue;
     private javax.swing.JLabel labelBackground;
-    private javax.swing.JLabel labelGodClassTF;
-    private javax.swing.JLabel labelTCCTF;
-    private javax.swing.JLabel labelTCCValue;
-    private javax.swing.JLabel labelWMCMethodCountValue;
-    private javax.swing.JLabel labelWMCTF;
-    private javax.swing.JLabel labelWMCValue;
     private javax.swing.JPanel panelConsole;
     private javax.swing.JPanel panelGodClass;
     private javax.swing.JPanel panelStatistics;
     private javax.swing.JScrollPane scrollPaneTextAreaOutput;
-    private javax.swing.JSpinner spinnerATFDLimit;
-    private javax.swing.JSpinner spinnerTCCLimit;
-    private javax.swing.JSpinner spinnerWMCLimit;
-    private javax.swing.JSpinner spinnerWMCMethodCountLimit;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTextArea textAreaOutput;
     // End of variables declaration//GEN-END:variables
