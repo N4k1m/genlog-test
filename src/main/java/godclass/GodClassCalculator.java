@@ -50,9 +50,16 @@ public class GodClassCalculator
     //<editor-fold defaultstate="collapsed" desc="Public methods">
     public void calculate(final CompilationUnit cu)
     {
+        this.wmcCalculator.reset();
         this.wmcCalculator.calculate(cu);
+
+        this.mccCalculator.reset();
         this.mccCalculator.calculate(cu);
+
+        this.tccCalculator.reset();
         this.tccCalculator.calculate(cu);
+
+        this.atfdCalculator.reset();
         this.atfdCalculator.calculate(cu);
     }
 
