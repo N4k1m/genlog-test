@@ -69,22 +69,18 @@ public class MainFrame extends javax.swing.JFrame
         this.mediator = new GodClassMediator();
 
         // Colleagues
-        System.out.println("ATFD");
         this.atfdLimitSpinner = new ATFDLimitSpinner(this.mediator);
         this.atfdValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "ATFD ?");
         this.atfdTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
 
-        System.out.println("WMC");
         this.wmcLimitSpinner = new WMCLimitSpinner(this.mediator);
         this.wmcValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "WMC ?");
         this.wmcTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
 
-        System.out.println("MCC");
         this.mccLimitSpinner = new MCCLimitSpinner(this.mediator);
         this.mccValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "MCC ?");
         this.mccTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
 
-        System.out.println("TCC");
         this.tccLimitSpinner = new TCCLimitSpinner(this.mediator);
         this.tccValueLabel   = new HorizontalAlignedColoredLabel(this.mediator, "TCC ?");
         this.tccTFLabel      = new HorizontalAlignedColoredLabel(this.mediator, "TRUE or FALSE ?");
