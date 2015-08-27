@@ -32,12 +32,8 @@ public class MCCCalculator extends MetricCalculator
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public MCCCalculator()
     {
-        this(0.0);
-    }
+        super();
 
-    public MCCCalculator(double threshold)
-    {
-        super(threshold);
         this.visitor = new MCCVisitor();
         this.methodsCyclomaticComplexity = new HashMap<>();
         this.currentMethodCyclomaticComplexity = 0;

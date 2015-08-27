@@ -49,12 +49,8 @@ public class TCCCalculator extends MetricCalculator
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public TCCCalculator()
     {
-        this(1.0);
-    }
+        super();
 
-    public TCCCalculator(double threshold)
-    {
-        super(threshold);
         this.tccVariablesMethodsVisitor = new TCCVariablesMethodsVisitor();
         this.tccConnectionsVisitor = new TCCConnectionsVisitor();
 

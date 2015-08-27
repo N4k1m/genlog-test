@@ -47,13 +47,7 @@ public class ATFDCalculator extends MetricCalculator
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public ATFDCalculator()
     {
-        this(DEFAULT_ATFD_METRIC_LIMIT);
-    }
-
-    public ATFDCalculator(double threshold)
-    {
-        super(threshold);
-
+        super();
         this.visitor = new ATFDVisitor();
         this.classesToRemove = new HashSet<>();
         this.externalClasses = new HashSet<>();
