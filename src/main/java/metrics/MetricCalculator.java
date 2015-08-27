@@ -20,6 +20,7 @@ public abstract class MetricCalculator
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     protected MetricCalculator()
     {
+        this.metric = 0.0;
     }
     //</editor-fold>
 
