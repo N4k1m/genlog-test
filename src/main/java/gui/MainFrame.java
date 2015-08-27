@@ -151,7 +151,7 @@ public class MainFrame extends javax.swing.JFrame
 
         panelGodClass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.png"))); // NOI18N
+        labelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         panelGodClass.add(labelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         tabbedPane.addTab("Analyseur de classe God", panelGodClass);
