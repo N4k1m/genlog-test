@@ -179,6 +179,10 @@ public class TCCCalculator extends MetricCalculator
     public void calculate(CompilationUnit cu)
     {
         this.tccVariablesMethodsVisitor.visit(cu, this);
+
+        this.printVisibleMethods();
+        this.printMemberVariables();
+
         this.tccConnectionsVisitor.visit(cu, this);
 
         this.printConnectedMethodsToVariables();
