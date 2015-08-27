@@ -32,7 +32,7 @@ public abstract class MetricCalculator
 
     public void reset()
     {
-        this.metric = 0;
+        this.metric = 0.0;
     }
     //</editor-fold>
 
