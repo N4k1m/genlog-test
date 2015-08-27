@@ -55,11 +55,43 @@ public class WMCCalculatorTest
     }
 
     /**
+     * Test of all MethodCount methods, of class WMCCalculator.
+     */
+    @Test
+    public void testMethodCount()
+    {
+        System.out.println("* WMCCalculatorTest: testMethodCount()");
+
+        calculator.setMethodCount(4);
+        assertTrue(4 == calculator.getMethodCount());
+
+        calculator.increaseMethodCount();
+        assertTrue(5 == calculator.getMethodCount());
+    }
+
+    /**
+     * Test of reset method, of class WMCCalculator.
+     */
+    @Test
+    public void testReset()
+    {
+        System.out.println("* WMCCalculatorTest: testReset()");
+
+        calculator.setMethodCount(4);
+        assertTrue(4 == calculator.getMethodCount());
+
+        calculator.reset();
+        assertTrue(0 == calculator.getMethodCount());
+    }
+
+    /**
      * Test of calculate method, of class WMCCalculator.
      */
     @Test
     public void testCalculate()
     {
+        System.out.println("* WMCCalculatorTest: testCalculate()");
+
         try
         {
             File fileWMC7 = new File(getClass().getResource("/code/WMC14.java").toURI());
@@ -77,31 +109,5 @@ public class WMCCalculatorTest
         {
             System.out.println("WMCCalculatorTest : " + ex.getMessage());
         }
-    }
-
-    /**
-     * Test of all MethodCount methods, of class WMCCalculator.
-     */
-    @Test
-    public void testMethodCount()
-    {
-        calculator.setMethodCount(4);
-        assertTrue(4 == calculator.getMethodCount());
-
-        calculator.increaseMethodCount();
-        assertTrue(5 == calculator.getMethodCount());
-    }
-
-    /**
-     * Test of reset method, of class WMCCalculator.
-     */
-    @Test
-    public void testReset()
-    {
-        calculator.setMethodCount(4);
-        assertTrue(4 == calculator.getMethodCount());
-
-        calculator.reset();
-        assertTrue(0 == calculator.getMethodCount());
     }
 }
