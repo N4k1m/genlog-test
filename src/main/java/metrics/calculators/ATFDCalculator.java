@@ -119,9 +119,19 @@ public class ATFDCalculator extends MetricCalculator
         this.classesToRemove.add(classeName);
     }
 
+    public Set<String> getClassesToRemove()
+    {
+        return this.classesToRemove;
+    }
+
     public boolean addExternalClass(final String className)
     {
         return this.externalClasses.add(className);
+    }
+
+    public Set<String> getExternalClasses()
+    {
+        return this.externalClasses;
     }
 
     public boolean addExternalClassOfVariable(final String variableName)
