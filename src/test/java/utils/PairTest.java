@@ -115,6 +115,8 @@ public class PairTest
     @Test
     public void testHashCode()
     {
+        System.out.println("* PairTest: testHashCode()");
+
         Pair<Integer, Double> pair2 = new Pair<>(a, b);
         Pair<Double, Integer> pair3 = new Pair<>(b, a);
 
