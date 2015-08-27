@@ -108,4 +108,17 @@ public class PairTest
 
         assertFalse(this.pair.equals(this.a));
     }
+
+    /**
+     * Test of hashCode method, of class Pair.
+     */
+    @Test
+    public void testHashCode()
+    {
+        Pair<Integer, Double> pair2 = new Pair<>(a, b);
+        Pair<Double, Integer> pair3 = new Pair<>(b, a);
+
+        assertEquals(this.pair.hashCode(), pair2.hashCode());
+        assertNotSame(this.pair.hashCode(), pair3.hashCode());
+    }
 }
