@@ -33,23 +33,48 @@ public class TreeNode<N>
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Public methods">
-    public void remove()
+    public boolean forgetParent()
     {
         if(this.parent != null)
-            parent.removeChild(this);
+            return parent.removeChild(this);
+        return true;
     }
 
-    private void removeChild(TreeNode<N> child)
+    public boolean removeChild(TreeNode<N> child)
     {
         if (this.children.contains(child))
-            this.children.remove(child);
+        {
+            child.parent = null;
+            return this.children.remove(child);
+        }
+
+        return false;
     }
 
-    public void addChildNode(TreeNode<N> child)
+    public TreeNode<N> removeChildAt(int index) throws IndexOutOfBoundsException
     {
-        child.parent = this;
+        return this.children.remove(index);
+    }
+
+    public void removeChildren()
+    {
+        for(TreeNode<N> child : this.children)
+            child.parent = null;
+
+        this.children.clear();
+    }
+
+    public boolean addChildNode(TreeNode<N> child)
+    {
         if (!children.contains(child))
-            children.add(child);
+        {
+            child.forgetParent();
+
+            child.parent = this;
+            return children.add(child);
+        }
+
+        return false;
     }
 
     public TreeNode<N> deepCopy()
