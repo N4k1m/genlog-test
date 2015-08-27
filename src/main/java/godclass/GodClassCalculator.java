@@ -17,6 +17,21 @@ import metrics.calculators.WMCCalculator;
  */
 public class GodClassCalculator
 {
+    //<editor-fold defaultstate="collapsed" desc="Static declaration">
+    public static double DEFAULT_ATFD_LIMIT;
+    public static double DEFAULT_WMC_LIMIT;
+    public static double DEFAULT_MCC_LIMIT;
+    public static double DEFAULT_TCC_LIMIT;
+
+    static
+    {
+        DEFAULT_ATFD_LIMIT = 4;
+        DEFAULT_WMC_LIMIT  = 15;
+        DEFAULT_MCC_LIMIT  = 47;
+        DEFAULT_TCC_LIMIT  = 1.0/3.0;
+    }
+    //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="Variables declaration">
     protected WMCCalculator wmcCalculator;
     protected MCCCalculator mccCalculator;
@@ -50,17 +65,27 @@ public class GodClassCalculator
     //<editor-fold defaultstate="collapsed" desc="Public methods">
     public void calculate(final CompilationUnit cu)
     {
+        System.out.println("=================================================");
+        
         this.wmcCalculator.reset();
         this.wmcCalculator.calculate(cu);
+
+        System.out.println("=================================================");
 
         this.mccCalculator.reset();
         this.mccCalculator.calculate(cu);
 
+        System.out.println("=================================================");
+
         this.tccCalculator.reset();
         this.tccCalculator.calculate(cu);
 
+        System.out.println("=================================================");
+
         this.atfdCalculator.reset();
         this.atfdCalculator.calculate(cu);
+
+        System.out.println("=================================================");
     }
 
     public boolean isGodClass()

@@ -57,7 +57,6 @@ public class ATFDVisitor extends VoidVisitorAdapter<ATFDCalculator>
     @Override
     public void visit(MethodDeclaration methodDeclaration, ATFDCalculator calculator)
     {
-        System.out.println("=================================================");
         System.out.println("[ATFD] Nouvelle méthode = " + methodDeclaration.getName());
 
         if (!methodDeclaration.getParameters().isEmpty())

@@ -65,7 +65,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(IfStmt ifStmt, MCCCalculator mcCabeCalculator)
     {
-        System.out.println("McCabe :    if statement --> Complexite + 1 ");
+        System.out.println("[McCabe]    if statement --> Complexite + 1 ");
 
         // Add one for each if statement
         mcCabeCalculator.increaseCyclomaticComplexity();
@@ -76,7 +76,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(WhileStmt whileStmt, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    while statement --> Complexite + 1");
+        System.out.println("[McCabe]    while statement --> Complexite + 1");
 
         // Add one for each while statement
         mCCCalculator.increaseCyclomaticComplexity();
@@ -87,7 +87,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(DoStmt doStmt, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    do...while statement --> Complexite + 1");
+        System.out.println("[McCabe]    do...while statement --> Complexite + 1");
 
         // Add one for each do...while statement
         mCCCalculator.increaseCyclomaticComplexity();
@@ -98,7 +98,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(ForStmt forStmt, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    for statement --> Complexite + 1");
+        System.out.println("[McCabe]    for statement --> Complexite + 1");
 
         // Add one for each while statement
         mCCCalculator.increaseCyclomaticComplexity();
@@ -109,7 +109,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(ForeachStmt foreachStmt, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    foreach statement --> Complexite + 1");
+        System.out.println("[McCabe]    foreach statement --> Complexite + 1");
 
         // Add one for each foreach statement
         mCCCalculator.increaseCyclomaticComplexity();
@@ -120,7 +120,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(SwitchStmt switchStmt, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    switch statement --> Complexite + 1 ");
+        System.out.println("[McCabe]    switch statement --> Complexite + 1 ");
 
         // Add one for each switch statement
         mCCCalculator.increaseCyclomaticComplexity();
@@ -136,7 +136,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
          */
         if (switchEntryStmt.getLabel() != null)
         {
-            System.out.println("McCabe :        case statement --> Complexite + 1 ");
+            System.out.println("[McCabe]        case statement --> Complexite + 1 ");
             mCCCalculator.increaseCyclomaticComplexity();
         }
 
@@ -146,7 +146,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(CatchClause catchClause, MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe :    catch clause --> Complexite + 1 ");
+        System.out.println("[McCabe]    catch clause --> Complexite + 1 ");
 
         // Add one for each catch clause
         mCCCalculator.increaseCyclomaticComplexity();
@@ -160,7 +160,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
         Operator operator = binaryExpr.getOperator();
         if (operator == BinaryExpr.Operator.and || operator == BinaryExpr.Operator.or)
         {
-            System.out.println("McCabe :        expression logique && ou || --> complexite + 1");
+            System.out.println("[McCabe]        expression logique && ou || --> complexite + 1");
 
             // Add one for each logic expression && or ||
             mcCabeCalculator.increaseCyclomaticComplexity();
@@ -172,7 +172,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
     @Override
     public void visit(ThrowStmt throwStmt, MCCCalculator mcCabeCalculator)
     {
-        System.out.println("McCabe :    throw statement --> Complexite + 1");
+        System.out.println("[McCabe]    throw statement --> Complexite + 1");
 
         // Add one for each throw statement
         mcCabeCalculator.increaseCyclomaticComplexity();
@@ -186,7 +186,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
                                                       List<NameExpr> throwsClauses,
                                                       MCCCalculator mCCCalculator)
     {
-        System.out.println("McCabe : Nouvelle methode = "
+        System.out.println("[McCabe] Nouvelle methode = "
             + methodDeclaration.getDeclarationAsString(false, false, true) + " --> Complexite = 1");
 
         // Cyclomatic complexity : Start with a count of one for the method.
@@ -198,7 +198,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
             mCCCalculator.increaseCyclomaticComplexity(throwsClauses.size());
 
             for (NameExpr nameExpr : throwsClauses)
-                System.out.println("McCabe :    throws clause = " +
+                System.out.println("[McCabe]    throws clause = " +
                     nameExpr.getName() + " --> Complexite + 1");
         }
     }
@@ -207,7 +207,7 @@ public class MCCVisitor extends VoidVisitorAdapter<MCCCalculator>
                                                     MCCCalculator mCCCalculator)
     {
         // Save cyclomatic complexity for this method
-        System.out.println("McCabe : Sauvegarde de la complexite cyclomatique de la method = "
+        System.out.println("[McCabe] Sauvegarde de la complexite cyclomatique de la method = "
             + mCCCalculator.getCurrentMethodCyclomaticComplexity());
         mCCCalculator.saveMethodCyclomaticComplexity(
             methodDeclaration.getDeclarationAsString(false, true));

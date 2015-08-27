@@ -225,14 +225,14 @@ public class TCCCalculator extends MetricCalculator
     {
         System.out.println("[TCC] Nombre de méthodes visibles = " + this.visibleMethods.size());
         for(String method : this.visibleMethods)
-            System.out.println("Methode = " + method);
+            System.out.println("          Methode = " + method);
     }
 
     public void printMemberVariables()
     {
         System.out.println("[TCC] Nombre de variables membres = " + this.memberVariables.size());
         for(Map.Entry<String, Type> variable : this.memberVariables.entrySet())
-            System.out.println(variable.getValue().toString() + " " + variable.getKey());
+            System.out.println("          " + variable.getValue().toString() + " " + variable.getKey());
     }
 
     public void printConnectedMethodsToVariables()

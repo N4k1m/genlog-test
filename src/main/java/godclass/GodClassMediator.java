@@ -53,7 +53,11 @@ public class GodClassMediator implements Mediator,
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public GodClassMediator()
     {
-        this.calculator = new GodClassCalculator(20, 47, 1.0/3.0, 4);
+        this.calculator = new GodClassCalculator(
+            GodClassCalculator.DEFAULT_WMC_LIMIT,
+            GodClassCalculator.DEFAULT_MCC_LIMIT,
+            GodClassCalculator.DEFAULT_TCC_LIMIT,
+            GodClassCalculator.DEFAULT_ATFD_LIMIT);
     }
     //</editor-fold>
 

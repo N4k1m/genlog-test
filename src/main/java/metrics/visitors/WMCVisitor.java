@@ -25,7 +25,7 @@ public class WMCVisitor extends VoidVisitorAdapter<WMCCalculator>
         super.visit(methodDeclaration, wmcCalculator);
 
         // Method count
-        System.out.println("WMC : MethodDeclaration - Nouvelle methode = " + methodDeclaration.getName());
+        System.out.println("[WMC] Nouvelle methode = " + methodDeclaration.getName());
         wmcCalculator.increaseMethodCount();
     }
 
@@ -35,7 +35,7 @@ public class WMCVisitor extends VoidVisitorAdapter<WMCCalculator>
     {
         super.visit(constructorDeclaration, wmcCalculator);
 
-        System.out.println("WMC : ConstructorDeclaration - Nouveau constructeur = " + constructorDeclaration.getName());
+        System.out.println("[WMC] Nouveau constructeur = " + constructorDeclaration.getName());
         wmcCalculator.increaseMethodCount();
     }
     //</editor-fold>

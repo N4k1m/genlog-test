@@ -136,7 +136,6 @@ public class MainFrame extends javax.swing.JFrame
         tabbedPane = new javax.swing.JTabbedPane();
         panelGodClass = new javax.swing.JPanel();
         labelBackground = new javax.swing.JLabel();
-        panelStatistics = new javax.swing.JPanel();
         panelConsole = new javax.swing.JPanel();
         buttonClearConsole = new javax.swing.JButton();
         scrollPaneTextAreaOutput = new javax.swing.JScrollPane();
@@ -151,7 +150,6 @@ public class MainFrame extends javax.swing.JFrame
         panelGodClass.add(labelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         tabbedPane.addTab("Analyseur de classe God", panelGodClass);
-        tabbedPane.addTab("Statistiques", panelStatistics);
 
         panelConsole.setLayout(new java.awt.BorderLayout());
 
@@ -190,7 +188,6 @@ public class MainFrame extends javax.swing.JFrame
     private javax.swing.JLabel labelBackground;
     private javax.swing.JPanel panelConsole;
     private javax.swing.JPanel panelGodClass;
-    private javax.swing.JPanel panelStatistics;
     private javax.swing.JScrollPane scrollPaneTextAreaOutput;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTextArea textAreaOutput;

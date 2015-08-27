@@ -34,16 +34,6 @@ public class ATFDCalculator extends MetricCalculator
     protected Map<String, Type> localVariables;
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Static declaration">
-    public static double DEFAULT_ATFD_METRIC_LIMIT;
-
-    static
-    {
-        // TODO : lire ceci depuis un fichier de configuration
-        DEFAULT_ATFD_METRIC_LIMIT = 5;
-    }
-    //</editor-fold>
-
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public ATFDCalculator()
     {
@@ -168,7 +158,6 @@ public class ATFDCalculator extends MetricCalculator
 
     public void addLocalVariable(final String variable, final Type type)
     {
-        System.out.println("Ajout de la varaible = " + variable + " type = " + type.toString());
         this.localVariables.put(variable, type);
     }
 
